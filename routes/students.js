@@ -2,9 +2,12 @@
 // This is also where we'll be using Sequelize models imported from other files to read and write to the database;
 
 const router = require('express').Router();
+const { Student } = require("../database/models");
 
 router.get("/", (req, res, next) => {
-  res.send("these are all the students!!!");
+  Student.findAll()
+    .then(students => res.status(200).json(students))
+    .catch(err => console.log(err));
 })
 
 module.exports = router;
