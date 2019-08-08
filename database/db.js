@@ -16,7 +16,7 @@ type in the terminal/psql shell: \l to list all databases in for the user titled
 
 type in the terminal/psql shell: CREATE DATABASE "w4d4-demo"; (the semicolon is important, it denotes the ending of a SQL statement to execute)
 
-type in the terminal: \l to list all the databases (you should see the new database that you made)
+type in the terminal: \l to list all the databases (you should see the new database that you made) (this database now exists on your hard drive --- this is independent of your application)
 
 */
 
