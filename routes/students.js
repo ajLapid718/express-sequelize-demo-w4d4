@@ -3,4 +3,8 @@
 
 const router = require('express').Router();
 
+router.get("/", (req, res, next) => {
+  res.send("these are all the students!!!");
+})
+
 module.exports = router;
