@@ -6,7 +6,7 @@ const app = express();
 const db = require('./database');
 const apiRouter = require("./routes");
 
-db.sync();
+db.sync(); // edit pg_hba.conf file and make role for terminal user; 
 app.use("/api", apiRouter);
 
 app.listen(3000, () => {
