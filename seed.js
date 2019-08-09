@@ -4,15 +4,16 @@ const students = [{firstName: "Allan", lastName: "Abe"}, {firstName: "Brian", la
 
 const campuses = [{name: "Hunter College"}, {name: "NYU"}];
 
-async function populateDatabase() {
-  for (let i = 0; i < students.length; i++) {
-    let currentStudent = students[i];
-    await Student.create(currentStudent);
-  }
-  
+async function populateDatabase() {  
   for (let i = 0; i < campuses.length; i++) {
     let currentCampus = campuses[i];
     await Campus.create(currentCampus);
+  }
+
+  for (let i = 0; i < students.length; i++) {
+    let currentStudent = students[i];
+    let savedStudent = await Student.create(currentStudent);
+    await savedStudent.setCampus(1);
   }
 }
 
