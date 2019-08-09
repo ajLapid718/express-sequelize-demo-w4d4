@@ -4,6 +4,10 @@ const students = [{firstName: "Allan", lastName: "Abe"}, {firstName: "Brian", la
 
 const campuses = [{name: "Hunter College"}, {name: "NYU"}];
 
+function pickRandomId() {
+  return Math.floor(Math.random() * 2) + 1;
+}
+
 async function populateDatabase() {  
   for (let i = 0; i < campuses.length; i++) {
     let currentCampus = campuses[i];
@@ -13,7 +17,7 @@ async function populateDatabase() {
   for (let i = 0; i < students.length; i++) {
     let currentStudent = students[i];
     let savedStudent = await Student.create(currentStudent);
-    await savedStudent.setCampus(1);
+    await savedStudent.setCampus(pickRandomId());
   }
 }
 
