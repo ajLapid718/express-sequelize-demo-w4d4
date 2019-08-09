@@ -15,7 +15,7 @@ async function syncDatabase() {
 function configureApp() {
   app.use("/api", apiRouter);
 
-  // Error handling;
+  // Error handling (if a file/resource that is being requested does not exist --- attach a 404 to the Error object and pass it the error handling endware at the very bottom of this configuration function);
   app.use((req, res, next) => {
     if (path.extname(req.path).length) {
       const err = new Error('Not found');
@@ -27,7 +27,7 @@ function configureApp() {
     }
   });
 
-  // More error handling;
+  // More error handling (all of our errors that we pass to `next` will hit this single block of code --- allowing us to minimize the amount of error handling logic we'll have to write in our express routes);
   app.use((err, req, res, next) => {
     console.error(err);
     console.error(err.stack);
